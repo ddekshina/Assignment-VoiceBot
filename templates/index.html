@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Trading Bot</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>OTC Voice Trading Bot</h1>
+        
+        <div class="conversation-box" id="conversation">
+            <!-- Messages will appear here -->
+        </div>
+        
+        <div class="audio-feedback">
+            <div id="audioLevel"></div>
+        </div>
+        
+        <div class="controls">
+            <button id="startBtn" class="btn">Start Session</button>
+            <button id="voiceBtn" class="btn" disabled>
+                <span id="voiceIcon">🎤</span> Push to Talk
+            </button>
+        </div>
+        
+        <div class="status" id="status">Status: Ready</div>
+    </div>
+
+    <script>
+        // Browser compatibility check
+        if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+            document.getElementById('status').textContent = 
+                'Error: Voice recognition requires Chrome or Edge.';
+            document.getElementById('voiceBtn').disabled = true;
+        }
+    </script>
+    <script src="/static/script.js"></script>
+</body>
+</html>
